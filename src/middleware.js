@@ -7,7 +7,6 @@ export function middleware(request) {
   return NextResponse.next();
 }
 
-// Match only the root route ('/')
 export const config = {
   matcher: '/',
 };

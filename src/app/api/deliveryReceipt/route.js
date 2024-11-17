@@ -1,4 +1,3 @@
-// src/app/api/deliveryReceipt/route.js
 import connectDB from '../../utils/db';
 import CommunicationLog from '../../models/CommunicationLog';
 

@@ -1,4 +1,3 @@
-// src/app/api/orders/route.js
 import connectDB from '../../utils/db';
 import Order from '../../models/Order';
 

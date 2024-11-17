@@ -1,31 +1,31 @@
 import connectDB from '../../utils/db';
 import CommunicationLog from '../../models/CommunicationLog';
 import Customer from '../../models/Customer';
-import Campaign from '../../models/Campaign'; // Import Campaign model
+import Campaign from '../../models/Campaign'; 
 
 export async function POST(request) {
   await connectDB();
 
-  const { audienceIds, messageTemplate, createdBy } = await request.json(); // Include createdBy field
+  const { audienceIds, messageTemplate, createdBy } = await request.json(); 
 
   try {
-    // Send messages and log them
+   
     const logs = await Promise.all(
       audienceIds.map(async (customerId) => {
         const customer = await Customer.findById(customerId);
         if (!customer) return null;
 
-        // Personalize the message
+        
         const personalizedMessage = messageTemplate.replace('[Name]', customer.name);
 
-        // Save to communication log
+        
         const log = new CommunicationLog({
           customerId: customer._id,
           message: personalizedMessage,
         });
         await log.save();
 
-        // Update delivery status
+      
         await updateDeliveryStatus(log._id);
 
         return {
@@ -33,15 +33,15 @@ export async function POST(request) {
           name: customer.name,
           email: customer.email,
           message: personalizedMessage,
-          status: 'PENDING', // Assuming initial status as PENDING
+          status: 'PENDING',
         };
       })
     );
 
-    // Log the campaign
+    
     const campaign = new Campaign({
       message: messageTemplate,
-      createdBy, // Store the user who created the campaign
+      createdBy,
       recipients: logs.map((log) => ({
         customerId: log.customerId,
         name: log.name,
@@ -60,7 +60,7 @@ export async function POST(request) {
   }
 }
 
-// Helper to update delivery status
+
 async function updateDeliveryStatus(logId) {
   const status = Math.random() < 0.9 ? 'SENT' : 'FAILED';
 

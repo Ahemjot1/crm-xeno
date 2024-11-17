@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 
 export default function AddCustomer() {
-  const { data: session } = useSession(); // Access the authenticated user's session
+  const { data: session } = useSession(); 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +36,7 @@ export default function AddCustomer() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          addedBy: session.user.email, // Include the email of the authenticated user
+          addedBy: session.user.email, 
         }),
       });
 

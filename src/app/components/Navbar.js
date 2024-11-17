@@ -1,5 +1,5 @@
 "use client";
-// import google from '../../public/google2.png';
+
 import { signIn, signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -20,7 +20,6 @@ const Navbar = () => {
     return (
         <nav className="w-full bg-gradient-to-r from-blue-600 to-purple-700 text-white shadow-md">
             <div className="flex justify-between items-center px-4 py-3 md:px-6">
-                {/* Logo or Greeting */}
                 <div className="text-lg font-bold">
                     {status === 'authenticated' ? (
                         <span>Welcome, {session.user.name}!</span>
@@ -29,7 +28,6 @@ const Navbar = () => {
                     )}
                 </div>
 
-                {/* Authenticated Buttons */}
                 {status === "authenticated" && (
                     <div className="hidden md:flex space-x-4">
                         <button
@@ -47,7 +45,6 @@ const Navbar = () => {
                     </div>
                 )}
 
-                {/* Authentication Section */}
                 <div className="flex items-center space-x-4">
                     {status === "authenticated" ? (
                         <DropdownMenu>
@@ -87,7 +84,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Authenticated Buttons */}
             {status === "authenticated" && (
                 <div className="flex flex-col space-y-3 px-4 py-2 md:hidden">
                     <button

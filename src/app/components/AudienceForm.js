@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation'; // For client-side navigation
+import { useRouter } from 'next/navigation'; 
 import { useState } from 'react';
 
 export default function AudienceForm() {
@@ -12,7 +12,7 @@ export default function AudienceForm() {
     totalSpending: '',
     visits: '',
     lastVisit: '',
-    operator: 'AND', // Default to AND logic
+    operator: 'AND', 
   });
 
   const [messageTemplate, setMessageTemplate] = useState('');
@@ -77,7 +77,7 @@ export default function AudienceForm() {
         body: JSON.stringify({
           audienceIds,
           messageTemplate,
-          createdBy: session.user.email, // Pass the logged-in user's email
+          createdBy: session.user.email, 
         }),
       });
 

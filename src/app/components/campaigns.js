@@ -1,11 +1,10 @@
-// src/components/Campaigns.js
 import { useEffect, useState } from 'react';
 
 export default function Campaigns() {
   const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
-    // Fetch campaign history from API
+    
     async function fetchCampaigns() {
       const response = await fetch('/api/campaigns');
       const data = await response.json();

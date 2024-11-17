@@ -1,4 +1,3 @@
-// src/models/CommunicationLog.js
 import mongoose from 'mongoose';
 
 const communicationLogSchema = new mongoose.Schema({

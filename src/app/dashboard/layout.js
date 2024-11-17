@@ -1,4 +1,3 @@
-// import './styles/global'
 "use client"
 
 import Navbar from "@/app/components/Navbar";
